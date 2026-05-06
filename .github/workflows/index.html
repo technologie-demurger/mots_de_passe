@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activité Mot de Passe</title>
+    <!-- Font Awesome pour les icônes -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f8ff;
+            color: #333;
+        }
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: none;
+            background-color: white;
+            border: 1px solid #e0e0e0;
+        }
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        .profile-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .profile-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: #3498db;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+        .profile-info {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 10px;
+            width: 100%;
+            text-align: left;
+            margin-bottom: 15px;
+        }
+        .criterion {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .criterion i {
+            margin-right: 10px;
+            color: #3498db;
+            width: 20px;
+        }
+        input[type="text"] {
+            padding: 10px;
+            width: 70%;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            margin: 10px 0;
+        }
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        .success {
+            color: #27ae60;
+        }
+        .failure {
+            color: #e74c3c;
+        }
+        .icon {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #3498db;
+        }
+        .level-title {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        .nav-button {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Page d'accueil -->
+    <div id="accueil" class="container" style="display: block;">
+        <div class="icon">
+            <i class="fas fa-lock"></i>
+        </div>
+        <h1>Bienvenue à l'activité Mot de Passe</h1>
+        <p>Dans cette activité, tu vas devoir trouver des mots de passe en utilisant les informations des profils.</p>
+        <p>Il y a trois niveaux de difficulté : <strong>facile</strong>, <strong>moyen</strong> et <strong>difficile</strong>.</p>
+        <button onclick="showSection('facile1-profile')">
+            <i class="fas fa-play"></i> Commencer - Niveau Facile
+        </button>
+    </div>
+
+    <!-- Profils Niveau Facile -->
+    <div id="facile1-profile" class="container">
+        <h1>Profil - Niveau Facile</h1>
+        <div class="profile-container">
+            <div class="profile-avatar">
+                <i class="fas fa-dog"></i>
+            </div>
+            <div class="profile-info">
+                <div class="criterion">
+                    <i class="fas fa-user"></i>
+                    <span><strong>Prénom :</strong> Lucas</span>
+                </div>
+                <div class="criterion">
+                    <i class="fas fa-birthday-cake"></i>
+                    <span><strong>Année de naissance :</strong> 2025</span>
+                </div>
+                <div class="criterion">
+                    <i class="fas fa-paw"></i>
+                    <span><strong>Animal domestique :</strong> Chien (Luna)</span>
+                </div>
+            </div>
+        </div>
+        <div class="nav-button">
+            <button onclick="showSection('facile1')">
+                <i class="fas fa-arrow-right"></i> Passer à l'exercice
+            </button>
+        </div>
+    </div>
+
+    <div id="facile1" class="container">
+        <div class="level-title">
+            <i class="fas fa-smile-beam success"></i>
+            <h1>Niveau Facile - Exercice 1</h1>
+        </div>
+        <p>Trouve le mot de passe à partir du profil de Lucas :</p>
+        <p><input type="text" id="passwordFacile1" placeholder="Saisir le mot de passe"></p>
+        <button onclick="checkPassword('passwordFacile1', 'Luna2025', 'facile2-profile', 'facile1-profile')">
+            <i class="fas fa-check"></i> Valider
+        </button>
+    </div>
+
+    <!-- Profil Niveau Facile 2 -->
+    <div id="facile2-profile" class="container">
+        <h1>Profil - Niveau Facile</h1>
+        <div class="profile-container">
+            <div class="profile-avatar" style="background-color: #e74c3c;">
+                <i class="fas fa-cat"></i>
+            </div>
+            <div class="profile-info">
+                <div class="criterion">
+                    <i class="fas fa-user"></i>
+                    <span><strong>Prénom :</strong> Emma</span>
+                </div>
+                <div class="criterion">
+                    <i class="fas fa-paw"></i>
+                    <span><strong>Animal domestique :</strong> Chat (Felix)</span>
+                </div>
+            </div>
+        </div>
+        <div class="nav-button">
+            <button onclick="showSection('facile2')">
+                <i class="fas fa-arrow-right"></i> Passer à l'exercice
+            </button>
+        </div>
+    </div>
+
+    <div id="facile2" class="container">
+        <div class="level-title">
+            <i class="fas fa-smile-beam success"></i>
+            <h1>Niveau Facile - Exercice 2</h1>
+        </div>
+        <p>Trouve le mot de passe à partir du profil d'Emma :</p>
+        <p><input type="text" id="passwordFacile2" placeholder="Saisir le mot de passe"></p>
+        <button onclick="checkPassword('passwordFacile2', 'Felix', 'facile3-profile', 'facile2-profile')">
+            <i class="fas fa-check"></i> Valider
+        </button>
+    </div>
+
+    <!-- Profil Niveau Facile 3 -->
+    <div id="facile3-profile" class="container">
+        <h1>Profil - Niveau Facile</h1>
+        <div class="profile-container">
+            <div class="profile-avatar" style="background-color: #27ae60;">
+                <i class="fas fa-futbol"></i>
+            </div>
+            <div class="profile-info">
+                <div class="criterion">
+                    <i class="fas fa-user"></i>
+                    <span><strong>Prénom :</strong> Thomas</span>
+                </div>
+                <div class="criterion">
+                    <i class="fas fa-futbol"></i>
+                    <span><strong>Passion :</strong> Football</span>
+                </div>
+                <div class="criterion">
+                    <i class="fas fa-hashtag"></i>
+                    <span><strong>Numéro préféré :</strong> 10</span>
+                </div>
+            </div>
+        </div>
+        <div class="nav-button">
+            <button onclick="showSection('facile3')">
+                <i class="fas fa-arrow-right"></i> Passer à l'exercice
+            </button>
+        </div>
+    </div>
+
+    <div id="facile3" class="container">
+        <div class="level-title">
+            <i class="fas fa-smile-beam success"></i>
+            <h1>Niveau Facile - Exercice 3</h1>
+        </div>
+        <p>Trouve le mot de passe à partir du profil de Thomas :</p>
+        <p><input type="text" id="passwordFacile3" placeholder="Saisir le mot de passe"></p>
+        <button onclick="checkPassword('passwordFacile3', 'Football10', 'moyen1-profile', 'facile3-profile')">
+            <i class="fas fa-check"></i> Valider
+        </button>
+    </div>
+
+    <!-- Profils Niveau Moyen -->
+    <div id="moyen1-profile" class="container">
+        <h1>Profil - Niveau Moyen</h1>
+        <div class="profile-container">
+            <div class="profile-avatar" style="background-color: #f39c12;">
+                <i class="fas fa-landmark"></i>
+            </div>
+            <div class="profile-info">
+                <div class="criterion">
+                    <i class="fas fa-user"></i>
+                    <span><strong>Prénom :</strong> Sophie</span>
+                </div>
+                <div class="criterion">
+                    <i class="fas fa-city"></i>
+                    <span><strong>Ville préférée :</strong> Paris</span>
+                </div>
+                <div class="criterion">
+                    <i class="fas fa-hashtag"></i>
+                    <span><strong>Chiffre porte-bonheur :</strong> 123</span>
+                </div>
+            </div>
+        </div>
+        <div class="nav-button">
+            <button onclick="showSection('moyen1')">
+                <i class="fas fa-arrow-right"></i> Passer à l'exercice
+            </button>
+        </div>
+    </div>
+
+    <div id="moyen1" class="container">
+        <div class="level-title">
+            <i class="fas fa-meh-rolling-eyes" style="color: #f39c12;"></i>
+            <h1>Niveau Moyen - Exercice 1</h1>
+        </div>
+        <p>Trouve le mot de passe à partir du profil de Sophie :</p>
+        <p><input type="text" id="passwordMoyen1" placeholder="Saisir le mot de passe"></p>
+        <button onclick="checkPassword('passwordMoyen1', 'Paris123', 'moyen2-profile', 'moyen1-profile')">
+            <i class="fas fa-check"></i> Valider
+        </button>
+    </div>
+
+    <!-- Profil Niveau Moyen 2 -->
+    <div id="moyen2-profile" class="container">
+        <h1>Profil - Niveau Moyen</h1>
+        <div class="profile-container">
+            <div class="profile-avatar" style="background-color: #9b59b6;">
+                <i class="fas fa-apple-alt"></i>
+            </div>
+            <div class="profile-info">
+                <div class="criterion">
+                    <i class="fas fa-user"></i>
+                    <span><strong>Prénom :</strong> Léa</span>
+                </div>
+                <div class="criterion">
+                    <i class="fas fa-apple-alt"></i>
+                    <span><strong>Fruit préféré :</strong> Pomme</span>
+                </div>
+                <div class="criterion">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span><strong>Mois de naissance :</strong> Juillet (7)</span>
+                </div>
+            </div>
+        </div>
+        <div class="nav-button">
+            <button onclick="showSection('moyen2')">
+                <i class="fas fa-arrow-right"></i> Passer à l'exercice
+            </button>
+        </div>
+    </div>
+
+    <div id="moyen2" class="container">
+        <div class="level-title">
+            <i class="fas fa-meh-rolling-eyes" style="color: #f39c12;"></i>
+            <h1>Niveau Moyen - Exercice 2</h1>
+        </div>
+        <p>Trouve le mot de passe à partir du profil de Léa :</p>
+        <p><input type="text" id="passwordMoyen2" placeholder="Saisir le mot de passe"></p>
+        <button onclick="checkPassword('passwordMoyen2', 'Pomme7', 'moyen3-profile', 'moyen2-profile')">
+            <i class="fas fa-check"></i> Valider
+        </button>
+    </div>
+
+    <!-- Profil Niveau Moyen 3 -->
+    <div id="moyen3-profile" class="container">
+        <h1>Profil - Niveau Moyen</h1>
+        <div class="profile-container">
+            <div class="profile-avatar" style="background-color: #e67e22;">
+                <i class="fas fa-book"></i>
+            </div>
+            <div class="profile-info">
+                <div class="criterion">
+                    <i class="fas fa-user"></i>
+                    <span><strong>Prénom :</strong> Max</span>
+                </div>
+                <div class="criterion">
+                    <i class="fas fa-book"></i>
+                    <span><strong>Livre préféré :</strong> Harry Potter</span>
+                </div>
+                <div class="criterion">
+                    <i class="fas fa-birthday-cake"></i>
+                    <span><strong>Année de naissance :</strong> 2000</span>
+                </div>
+            </div>
+        </div>
+        <div class="nav-button">
+            <button onclick="showSection('moyen3')">
+                <i class="fas fa-arrow-right"></i> Passer à l'exercice
+            </button>
+        </div>
+    </div>
+
+    <div id="moyen3" class="container">
+        <div class="level-title">
+            <i class="fas fa-meh-rolling-eyes" style="color: #f39c12;"></i>
+            <h1>Niveau Moyen - Exercice 3</h1>
+        </div>
+        <p>Trouve le mot de passe à partir du profil de Max :</p>
+        <p><input type="text" id="passwordMoyen3" placeholder="Saisir le mot de passe"></p>
+        <button onclick="checkPassword('passwordMoyen3', 'Harry2000', 'difficile1-profile', 'moyen3-profile')">
+            <i class="fas fa-check"></i> Valider
+        </button>
+    </div>
+
+    <!-- Profils Niveau Difficile -->
+    <div id="difficile1-profile" class="container">
+        <h1>Profil - Niveau Difficile</h1>
+        <div class="profile-container">
+            <div class="profile-avatar" style="background-color: #e74c3c;">
+                <i class="fas fa-home"></i>
+            </div>
+            <div class="profile-info">
+                <div class="criterion">
+                    <i class="fas fa-user"></i>
+                    <span><strong>Prénom :</strong> Alice</span>
+                </div>
+                <div class="criterion">
+                    <i class="fas fa-cat"></i>
+                    <span><strong>Animal domestique :</strong> Chat (Maison)</span>
+                </div>
+                <div class="criterion">
+                    <i class="fas fa-birthday-cake"></i>
+                    <span><strong>Année de naissance :</strong> 2024</span>
+                </div>
+                <div class="criterion">
+                    <i class="fas fa-info-circle"></i>
+                    <span><strong>Indice spécial :</strong> Remplace le 'a' par '@'.</span>
+                </div>
+            </div>
+        </div>
+        <div class="nav-button">
+            <button onclick="showSection('difficile1')">
+                <i class="fas fa-arrow-right"></i> Passer à l'exercice
+            </button>
+        </div>
+    </div>
+
+    <div id="difficile1" class="container">
+        <div class="level-title">
+            <i class="fas fa-dizzy failure"></i>
+            <h1>Niveau Difficile - Exercice 1</h1>
+        </div>
+        <p>Trouve le mot de passe à partir du profil d'Alice :</p>
+        <p><input type="text" id="passwordDifficile1" placeholder="Saisir le mot de passe"></p>
+        <button onclick="checkPassword('passwordDifficile1', 'M@ison2024', 'difficile2-profile', 'difficile1-profile')">
+            <i class="fas fa-check"></i> Valider
+        </button>
+    </div>
+
+    <!-- Profil Niveau Difficile 2 -->
+    <div id="difficile2-profile" class="container">
+        <h1>Profil - Niveau Difficile</h1>
+        <div class="profile-container">
+            <div class="profile-avatar" style="background-color: #1abc9c;">
+                <i class="fas fa-globe-americas"></i>
+            </div>
+            <div class="profile-info">
+                <div class="criterion">
+                    <i class="fas fa-user"></i>
+                    <span><strong>Prénom :</strong> Noah</span>
+                </div>
+                <div class="criterion">
+                    <i class="fas fa-globe-americas"></i>
+                    <span><strong>Pays préféré :</strong> Japon</span>
+                </div>
+                <div class="criterion">
+                    <i class="fas fa-hashtag"></i>
+                    <span><strong>Chiffre préféré :</strong> 7</span>
+                </div>
+                <div class="criterion">
+                    <i class="fas fa-info-circle"></i>
+                    <span><strong>Indice spécial :</strong> Remplace le 'o' par '0'.</span>
+                </div>
+            </div>
+        </div>
+        <div class="nav-button">
+            <button onclick="showSection('difficile2')">
+                <i class="fas fa-arrow-right"></i> Passer à l'exercice
+            </button>
+        </div>
+    </div>
+
+    <div id="difficile2" class="container">
+        <div class="level-title">
+            <i class="fas fa-dizzy failure"></i>
+            <h1>Niveau Difficile - Exercice 2</h1>
+        </div>
+        <p>Trouve le mot de passe à partir du profil de Noah :</p>
+        <p><input type="text" id="passwordDifficile2" placeholder="Saisir le mot de passe"></p>
+        <button onclick="checkPassword('passwordDifficile2', 'Jap0n7', 'difficile3-profile', 'difficile2-profile')">
+            <i class="fas fa-check"></i> Valider
+        </button>
+    </div>
+
+    <!-- Profil Niveau Difficile 3 -->
+    <div id="difficile3-profile" class="container">
+        <h1>Profil - Niveau Difficile</h1>
+        <div class="profile-container">
+            <div class="profile-avatar" style="background-color: #95a5a6;">
+                <i class="fas fa-film"></i>
+            </div>
+            <div class="profile-info">
+                <div class="criterion">
+                    <i class="fas fa-user"></i>
+                    <span><strong>Prénom :</strong> Chloé</span>
+                </div>
+                <div class="criterion">
+                    <i class="fas fa-film"></i>
+                    <span><strong>Film préféré :</strong> Titanic</span>
+                </div>
+                <div class="criterion">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span><strong>Mois de naissance :</strong> Décembre (12)</span>
+                </div>
+            </div>
+        </div>
+        <div class="nav-button">
+            <button onclick="showSection('difficile3')">
+                <i class="fas fa-arrow-right"></i> Passer à l'exercice
+            </button>
+        </div>
+    </div>
+
+    <div id="difficile3" class="container">
+        <div class="level-title">
+            <i class="fas fa-dizzy failure"></i>
+            <h1>Niveau Difficile - Exercice 3</h1>
+        </div>
+        <p>Trouve le mot de passe à partir du profil de Chloé :</p>
+        <p><input type="text" id="passwordDifficile3" placeholder="Saisir le mot de passe"></p>
+        <button onclick="checkPassword('passwordDifficile3', 'Titanic12', 'success', 'difficile3-profile')">
+            <i class="fas fa-check"></i> Valider
+        </button>
+    </div>
+
+    <!-- Page de succès -->
+    <div id="success" class="container">
+        <div class="icon success">
+            <i class="fas fa-trophy"></i>
+        </div>
+        <h1 class="success">Bravo !</h1>
+        <p>Tu as trouvé le bon mot de passe.</p>
+        <button onclick="showSection('accueil')">
+            <i class="fas fa-home"></i> Retour à l'accueil
+        </button>
+    </div>
+
+    <!-- Page d'échec -->
+    <div id="failure" class="container">
+        <div class="icon failure">
+            <i class="fas fa-times-circle"></i>
+        </div>
+        <h1 class="failure">Dommage !</h1>
+        <p>Ce n'est pas le bon mot de passe.</p>
+        <button id="retryButton" onclick="goBack()">
+            <i class="fas fa-redo"></i> Recommencer
+        </button>
+    </div>
+
+    <script>
+        function showSection(sectionId) {
+            const sections = document.querySelectorAll('.container');
+            sections.forEach(section => {
+                section.style.display = 'none';
+            });
+            document.getElementById(sectionId).style.display = 'block';
+        }
+
+        function checkPassword(inputId, correctPassword, nextSection, previousSection) {
+            const password = document.getElementById(inputId).value;
+            if (password === correctPassword) {
+                showSection(nextSection);
+            } else {
+                localStorage.setItem('previousSection', previousSection);
+                showSection('failure');
+            }
+        }
+
+        function goBack() {
+            const previousSection = localStorage.getItem('previousSection');
+            showSection(previousSection);
+        }
+    </script>
+</body>
+</html>
